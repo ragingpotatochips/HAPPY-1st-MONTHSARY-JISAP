@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 1st Monthsary 💙</title>
+
+<style>
+body{
+    background:#89CFF0;
+    font-family: Arial, sans-serif;
+    margin:0;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+h1,h2{ color:#FF69B4; }
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+    max-width:900px;
+    margin:20px auto;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:12px;
+    border:2px solid #FF69B4;
+    cursor:pointer;
+    transition:transform .3s;
+}
+.gallery img:hover{ transform:scale(1.05); }
+
+/* Modal */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:10;
+}
+.modal-content{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    max-width:300px;
+}
+.modal-content img{
+    width:100%;
+    border-radius:12px;
+}
+.close{
+    margin-top:10px;
+    background:#FF69B4;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Music */
+audio{ width:80%; max-width:400px; }
+
+/* Video */
+video{
+    width:90%;
+    max-width:500px;
+    border-radius:16px;
+    margin:20px auto;
+    display:block;
+}
+</style>
+</head>
+
+<body>
+    <div class="background">
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="cloud"></span>
+  <span class="cloud small"></span>
+</div>
+
+
+<h1>HAPPY MONTHSARY JISAP💙</h1>
+
+<h2>Choose a Song</h2>
+<audio id="audioPlayer" controls>
+    <source id="audioSource" src="OldLove.mp3">
+</audio>
+
+<div class="music-player">
+    <p id="nowPlaying"></p>
+
+    <div class="music-selection">
+        <button class="active" onclick="changeSong('OldLove.mp3', this)">Old Love</button>
+        <button onclick="changeSong('blue.mp3', this)">Blue</button>
+        <button onclick="changeSong('Halfofme.mp3', this)">Half of Me</button>
+        <button onclick="changeSong('YouAndI.mp3', this)">You And I</button>
+        <button onclick="changeSong('TheSpaceBetweenUs.mp3', this)">The Space Between Us</button>
+        <button onclick="changeSong('Frank.mp3', this)">American Wedding</button>
+    </div>
+    
+</div>
+<script>
+function changeSong(songSrc, button){
+    const audioPlayer = document.getElementById("audioPlayer");
+    const audioSource = document.getElementById("audioSource");
+    const nowPlaying = document.getElementById("nowPlaying");
+
+    audioSource.src = songSrc;
+    audioPlayer.load();
+    audioPlayer.play();
+
+    // Update active button
+    document.querySelectorAll(".music-selection button")
+        .forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    // Update text
+    nowPlaying.innerText = "🎶 Now Playing: " + button.innerText;
+}
+</script>
+
+
+
+<h2>Our Photos Together!</h2>
+
+<div class="gallery">
+    <img src="j1.jpeg" onclick="openModal(this,'One of my favorite pics natin')">
+    <img src="j2.jpeg" onclick="openModal(this,'I love this picture of you')">
+    <img src="3.jpeg" onclick="openModal(this,'katakot')">
+    <img src="4.jpeg" onclick="openModal(this,'OUR FIRST DATE!')">
+    <img src="5.jpeg" onclick="openModal(this,'YOURE SO HOT ND GORGEOUS HERE...')">
+    <img src="6.jpeg" onclick="openModal(this,'REMINDS ME OF HOW U LOOK AT ME')">
+    <img src="7.jpeg" onclick="openModal(this,'OK NO WORDS YOURE SO PRETTY.')">
+    <img src="8.jpeg" onclick="openModal(this,'pakiss')">
+    <img src="9.jpeg" onclick="openModal(this,'I absolutely love your smile')">
+    <img src="10.jpeg" onclick="openModal(this,'ANG GANDA MO TvT')">
+    <img src="11.jpeg" onclick="openModal(this,'THE DAY I KISSED U ON THE LIPS..')">
+    <img src="12.jpeg" onclick="openModal(this,'MY FAVORITE PHOTO OF U CAUSE YOURE SMILING')">
+</div>
+
+
+<h2>Special Video 🎥</h2>
+<video src="jvid.mp4" controls></video>
+
+<footer>
+    <p>Created by Kai 💙</p>
+</footer>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <img id="modalImg">
+        <p id="modalText"></p>
+        <button class="close" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+function changeSong(song,btn){
+    audioSource.src=song;
+    audioPlayer.load();
+    audioPlayer.play();
+}
+
+function openModal(img,text){
+    modal.style.display="flex";
+    modalImg.src=img.src;
+    modalText.innerText=text;
+}
+function closeModal(){
+    modal.style.display="none";
+}
+</script>
+
+</body>
+</html>
